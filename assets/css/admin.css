@@ -1,4 +1,4 @@
-/* Admin Portal CSS - Light Green Theme */
+/* Admin Portal CSS - Light purple Theme */
 
 * {
     margin: 0;
@@ -10,8 +10,8 @@
     --primary-purple: #8B6CF6;
     --dark-purple: #70548b;
     --light-green: #86efac;
-    --sidebar-bg: #d0a0dc;
-    --main-bg: #f5f5f5;
+    --sidebar-bg: #320b25;
+    --main-bg: #f3f0fa;
     --card-bg: #ffffff;
     --text-dark: #333333;
     --text-light: #6b7280;
@@ -73,9 +73,9 @@ body {
 }
 
 .add-event-btn {
-    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+    background:#6c5141;
     color: white;
-    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 0.9rem;
     border-radius: 8px;
     font-size: 1rem;
@@ -86,7 +86,7 @@ body {
 
 .add-event-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(74, 222, 128, 0.4);
+    box-shadow: 0 6px 20px rgb(0, 0, 0);
 }
 
 .navigation h3 {
@@ -227,7 +227,7 @@ body {
 }
 
 .btn-add-new-event {
-    background: linear-gradient(135deg, var(--primary-purple), var(--dark-purple));
+    background-color: #6c5141;
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -240,7 +240,7 @@ body {
 
 .btn-add-new-event:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(74, 222, 128, 0.4);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* Stats Grid */

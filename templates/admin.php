@@ -1,5 +1,5 @@
 
-<?php include '../config/config.php'; 
+<?php include '../config/db_connect.php'; 
 ?>
 
 <!DOCTYPE html>
@@ -21,10 +21,6 @@
                 <p>Event Manager</p>
             </div>
         </div>
-
-        <button class="add-event-btn" onclick="openAddEventModal()">
-            + Add Event
-        </button>
 
         <nav class="navigation">
             <h3>NAVIGATION</h3>
@@ -146,35 +142,35 @@
                 <h2>Add New Event</h2>
                 <span class="close-btn" onclick="closeAddEventModal()">&times;</span>
             </div>
-            <form id="addEventForm" method="POST" action="add_event.php">
+            <form id="addEventForm" method="POST" action="../pages/add_event.php">
                 <div class="form-group">
                     <label for="eventName">Event Name *</label>
-                    <input type="text" id="eventName" required>
+                    <input type="text" id="eventName" name="event_title" required>
                     <span class="error-msg" id="eventNameError"></span>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
                         <label for="eventDate">Date *</label>
-                        <input type="date" id="eventDate" required>
+                        <input type="date" id="eventDate" name="event_date" required>
                         <span class="error-msg" id="eventDateError"></span>
                     </div>
                     <div class="form-group">
                         <label for="eventTime">Time *</label>
-                        <input type="time" id="eventTime" required>
+                        <input type="time" id="eventTime" name="event_time" required>
                         <span class="error-msg" id="eventTimeError"></span>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="eventLocation">Location *</label>
-                    <input type="text" id="eventLocation" required>
+                    <input type="text" id="eventLocation" name="event_location" required>
                     <span class="error-msg" id="eventLocationError"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="eventDescription">Description *</label>
-                    <textarea id="eventDescription" rows="3" required></textarea>
+                    <textarea id="eventDescription" name="event_description" rows="3" required></textarea>
                     <span class="error-msg" id="eventDescriptionError"></span>
                 </div>
 
@@ -270,6 +266,6 @@
         </div>
     </div>
 
-    <script src="js/admin-script.js"></script>
+    <script src="../assets/js/admin.js"></script>
 </body>
 </html>

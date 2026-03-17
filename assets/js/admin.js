@@ -82,24 +82,8 @@ function addEvent(e) {
         status: getEventStatus(eventDate, eventTime)
     };
     
-    // Add to events array
-    events.push(newEvent);
-    
-    // Save to localStorage
-    saveEvents();
-    
-    // Reload events display
-    loadEvents();
-    updateEventCount();
-    
-    // Close modal and reset form
-    closeAddEventModal();
-    document.getElementById('addEventForm').reset();
-    
-    // Show success message
-    alert('Event added successfully!');
-    
-    return false;
+document.getElementById('addEventForm').submit();    
+   // Submit form to PHP
 }
 
 // Get Event Status

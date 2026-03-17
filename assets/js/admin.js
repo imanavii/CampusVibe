@@ -6,7 +6,6 @@ let eventIdCounter = 1;
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
-    loadEvents();
     updateEventCount();
 });
 

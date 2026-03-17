@@ -318,6 +318,7 @@ body {
     margin-top: 2rem;
 }
 
+
 .section-header {
     display: flex;
     justify-content: space-between;
@@ -343,12 +344,16 @@ body {
 
 /* Events Grid */
 .events-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+   display: flex;
+    flex-direction: column;
     gap: 1.5rem;
+    width: 100%;
 }
 
+
 .event-card {
+    width: 100%;
+    box-sizing: border-box;
     background: white;
     border-radius: 12px;
     padding: 1.5rem;
@@ -676,10 +681,6 @@ body {
     }
 
     .stats-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .events-grid {
         grid-template-columns: 1fr;
     }
 

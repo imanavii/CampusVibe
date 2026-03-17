@@ -113,27 +113,49 @@
             </div>
 
             <div class="events-grid" id="eventsGrid">
-    <?php
-    $sql = "SELECT * FROM events WHERE DATE(event_date) = CURDATE()";
-    $result = $conn->query($sql);
+<?php
+$sql = "SELECT * FROM events WHERE event_date = CURDATE()";
+$result = $conn->query($sql);
 
+if($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-    ?>
-        <div class="event-card">
-            <h3><?php echo $row['event_title']; ?></h3>
-            <p><?php echo $row['event_date']; ?> at <?php echo $row['event_time']; ?></p>
-            <p><?php echo $row['event_location']; ?></p>
-            <p><?php echo $row['organizer_name']; ?></p>
-            <span><?php echo $row['category']; ?></span>
-        </div>
-    <?php } ?>
-</div>
-
-            <div id="noEventsMessage" class="no-events">
-                <p>No events added yet. Click "Add Event" to create your first event!</p>
+?>
+    <div class="event-card">
+        <div class="event-card-header">
+            <div class="event-title-container">
+                <h3 class="event-title"><?php echo $row['event_title']; ?></h3>
+                <span class="event-category"><?php echo ucfirst($row['category']); ?></span>
             </div>
-        </section>
-    </main>
+            <span class="event-status status-upcoming">Upcoming</span>
+        </div>
+        <div class="event-card-body">
+            <div class="event-info-row">
+                📅 <span><?php echo date('D, d M Y', strtotime($row['event_date'])); ?></span>
+            </div>
+            <div class="event-info-row">
+                🕐 <span><?php echo date('h:i A', strtotime($row['event_time'])); ?></span>
+            </div>
+            <div class="event-info-row">
+                📍 <span><?php echo $row['event_location']; ?></span>
+            </div>
+            <div class="event-info-row">
+                👤 <span><?php echo $row['organizer_name']; ?></span>
+            </div>
+        </div>
+        <div class="event-card-actions">
+            <button class="btn-edit">Edit</button>
+            <button class="btn-delete">Delete</button>
+        </div>
+    </div>
+<?php 
+    }
+} else {
+    echo '<div class="no-events"><p>No events scheduled for today.</p></div>';
+}
+?>
+</div>
+</section>
+</main>
 
     <!-- Add Event Modal -->
     <div id="addEventModal" class="modal">

@@ -1,3 +1,7 @@
+
+<?php include '../config/config.php'; 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,8 +117,21 @@
             </div>
 
             <div class="events-grid" id="eventsGrid">
-                <!-- Event cards will be dynamically added here -->
-            </div>
+    <?php
+    $sql = "SELECT * FROM events WHERE DATE(event_date) = CURDATE()";
+    $result = $conn->query($sql);
+
+    while($row = $result->fetch_assoc()) {
+    ?>
+        <div class="event-card">
+            <h3><?php echo $row['event_title']; ?></h3>
+            <p><?php echo $row['event_date']; ?> at <?php echo $row['event_time']; ?></p>
+            <p><?php echo $row['event_location']; ?></p>
+            <p><?php echo $row['organizer_name']; ?></p>
+            <span><?php echo $row['category']; ?></span>
+        </div>
+    <?php } ?>
+</div>
 
             <div id="noEventsMessage" class="no-events">
                 <p>No events added yet. Click "Add Event" to create your first event!</p>
@@ -129,7 +146,7 @@
                 <h2>Add New Event</h2>
                 <span class="close-btn" onclick="closeAddEventModal()">&times;</span>
             </div>
-            <form id="addEventForm" onsubmit="addEvent(event)">
+            <form id="addEventForm" method="POST" action="add_event.php">
                 <div class="form-group">
                     <label for="eventName">Event Name *</label>
                     <input type="text" id="eventName" required>

@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(120deg, #ffffff, #8a4bdc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+
+.left-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    width: 532px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* LOGIN CARD */
+.login-card {
+    width: 420px;
+    background: #f2f2f2;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.login-card h2 {
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.login-card input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 18px;
+    border: none;
+    background: #d9d9d9;
+    border-radius: 12px;
+    font-size: 16px;
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
+}
+
+.login-card button {
+    width: 200px;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #7f4bdc, #924ADA);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-card button:hover {
+    opacity: 0.9;
+}
+
+/* SIGNUP CARD */
+.signup-card {
+    width: 420px;
+    background: #f2f2f2;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.signup-card h2 {
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.signup-card input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 18px;
+    border: none;
+    background: #d9d9d9;
+    border-radius: 12px;
+    font-size: 16px;
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
+}
+
+.signup-card button {
+    width: 200px;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #7f4bdc, #924ADA);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.signup-card button:hover {
+    opacity: 0.9;
+}

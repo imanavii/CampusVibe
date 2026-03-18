@@ -22,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $insert->bind_param("sss", $name, $email, $hashed_password);
 
         if($insert->execute()){
-            header("Location: ../templates/login.php");
+            header("Location: ../pages/login.php");
             exit();
         } else {
             $error = "Something went wrong, try again";

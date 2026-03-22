@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #e6e3ef;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background: white;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.07);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 65px;
+}
+
+.nav-logo img {
+    width: 120px;
+    height: auto;
+}
+
+.nav-links a {
+    margin: 0 20px;
+    text-decoration: none;
+    color: #555;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.nav-links a.active {
+    color: #7f4bdc;
+    font-weight: 600;
+}
+
+.nav-profile svg {
+    color: #333;
+    cursor: pointer;
+}
+
+/* CONTAINER */
+.container {
+    padding: 30px 40px;
+}
+
+.container h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #2d1b6e;
+    margin-bottom: 24px;
+}
+
+/* SECTION */
+.section {
+    margin-bottom: 36px;
+}
+
+.section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 14px;
+}
+
+/* CARD CONTAINER */
+.card-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+/* CARD */
+.card {
+    min-width: 250px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.card img, .event-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.event-img-placeholder {
+    width: 100%;
+    height: 150px;
+    background: #ddd;
+}
+
+.card-content {
+    padding: 12px;
+}
+
+.card-content h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-bottom: 6px;
+}
+
+.card-content p {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.card-content button {
+    float: none;
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card-content button:hover {
+    background: #7f4bdc;
+    color: white;
+}
+
+/* TAGS */
+.tags {
+    text-align: center;
+
+    margin-top: 30px;
+}
+
+.tags h3 {
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+.tags button {
+    margin: 10px;
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: none;
+    background: #b795d5;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size:20px;
+}
+
+.tags button:hover {
+    background: #7f4bdc;
+    color: white;
+}
+/* modal pop up added new */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-box {
+    background: white;
+    border-radius: 24px;
+    width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    margin: auto;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+    animation: modalFadeIn 0.25s ease;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 32px 20px 32px;
+}
+
+.modal-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a2e;
+}
+
+.modal-close {
+    background: #f0f0f0;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background: #e0e0e0;
+    color: #111;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 0;
+}
+
+.modal-img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+}
+
+.modal-body {
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.modal-desc {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 8px;
+}
+
+.modal-details {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: #f9f7ff;
+    padding: 22px;
+    border-radius: 14px;
+}
+
+.modal-details p {
+    font-size: 14px;
+    color: #444;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.label {
+    font-weight: 600;
+    color: #333;
+    min-width: 130px;
+}
+
+.btn-modal-register {
+    display: block;
+    margin-top: 12px;
+    padding: 16px;
+    background: linear-gradient(90deg, #7f4bdc, #924ADA);
+    color: white;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+.btn-modal-register:hover {
+    opacity: 0.9;
+}

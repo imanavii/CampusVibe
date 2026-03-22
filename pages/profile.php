@@ -57,7 +57,7 @@ $fav_result = $conn->query($fav_query);
     <nav class="menu">
         <a href="dashboard.php">Dashboard</a>
         <a href="events.php">Events</a>
-        <a href="logout.php">Logout</a>
+        <a href="/campusvibe/api/logout.php">Logout</a>
     </nav>
 </aside>
 
@@ -82,22 +82,23 @@ $fav_result = $conn->query($fav_query);
 
         <h2>MY EVENTS ❤️</h2>
 
-        <div class="card-container">
-            <?php if($fav_result && $fav_result->num_rows > 0): ?>
-                <?php while($event = $fav_result->fetch_assoc()): ?>
-                <div class="card">
-                    <?php if($event['event_image']): ?>
-                        <img src="../assets/images/events/<?php echo htmlspecialchars($event['event_image']); ?>" alt="event">
-                    <?php else: ?>
-                        <div class="event-img-placeholder"></div>
-                    <?php endif; ?>
+      <div class="card-container">
+    <?php if($fav_result && $fav_result->num_rows > 0): ?>
+        <?php while($event = $fav_result->fetch_assoc()): ?>
+        <div class="card">
+            <?php
+            $prof_images = glob($_SERVER['DOCUMENT_ROOT'] . "/campusvibe/assets/images/" . $event['category'] . "/*.{jpg,jpeg,png}", GLOB_BRACE);
+            $prof_img = !empty($prof_images) ? "../assets/images/" . $event['category'] . "/" . basename($prof_images[array_rand($prof_images)]) : null;
+            ?>
+            <?php if($prof_img): ?>
+                <img src="<?php echo $prof_img; ?>" alt="event">
+            <?php else: ?>
+                <div class="event-img-placeholder"></div>
+            <?php endif; ?>
                     <div class="card-content">
                         <h4><?php echo htmlspecialchars($event['event_title']); ?></h4>
                         <p>📍 <?php echo htmlspecialchars($event['event_location']); ?></p>
                         <p>📅 <?php echo date("M d, Y", strtotime($event['event_date'])); ?></p>
-                        <button onclick="window.location.href='event_details.php?id=<?php echo $event['event_id']; ?>'">
-                            View More
-                        </button>
                     </div>
                 </div>
                 <?php endwhile; ?>

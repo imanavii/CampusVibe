@@ -3,7 +3,7 @@ session_start();
 include "../config/db_connect.php";
 
 if(!isset($_SESSION['user_id'])){
-    header("Location: ../pages/login.php");
+    header("Location: /campusvibe/pages/login.php");
     exit();
 }
 
@@ -18,17 +18,15 @@ $check->execute();
 $check->store_result();
 
 if($check->num_rows > 0){
-    // already favorited → remove
     $delete = $conn->prepare("DELETE FROM event_favorites WHERE user_id = ? AND event_id = ?");
     $delete->bind_param("ii", $user_id, $event_id);
     $delete->execute();
 } else {
-    // not favorited → add
     $insert = $conn->prepare("INSERT INTO event_favorites (user_id, event_id) VALUES (?, ?)");
     $insert->bind_param("ii", $user_id, $event_id);
     $insert->execute();
 }
 
-header("Location: ../templates/" . $redirect);
+header("Location: /campusvibe/pages/" . $redirect);
 exit();
 ?>

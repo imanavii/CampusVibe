@@ -6,7 +6,7 @@ if(!isset($_SESSION['user_id'])){
     header("Location: ../templates/login.php");
     exit();
 }
-
+$user_id = $_SESSION['user_id'];
 // Fetch events
 $query = "SELECT * FROM events ORDER BY event_date ASC";
 $result = $conn->query($query);
@@ -92,7 +92,7 @@ while($row = $result->fetch_assoc()){
 
     <div class="card-actions">
         <button class="btn-view-more" onclick="fetchEvent(<?php echo $event['event_id']; ?>)">View More</button>
-        <form method="POST" action="../api/fav_event.php" style="margin:0;">
+        <form method="POST" action="/campusvibe/api/fav_event.php" style="margin:0;">
             <input type="hidden" name="event_id" value="<?php echo $event['event_id']; ?>">
             <input type="hidden" name="redirect" value="events.php">
             <button type="submit" class="btn-fav"><?php echo $is_faved ? '❤️' : '🤍'; ?></button>

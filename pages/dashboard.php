@@ -134,7 +134,7 @@ $must_attend_result = $conn->query("SELECT * FROM events WHERE event_date >= CUR
     $fav_check->store_result();
     $is_faved = $fav_check->num_rows > 0;
     ?>
-    <form method="POST" action="campusvibe/api/fav_event.php" style="margin:0;">
+    <form method="POST" action="/campusvibe/api/fav_event.php" style="margin:0;">
         <input type="hidden" name="event_id" value="<?php echo $event['event_id']; ?>">
         <input type="hidden" name="redirect" value="dashboard.php">
         <button type="submit" class="btn-fav"><?php echo $is_faved ? '❤️' : '🤍'; ?></button>

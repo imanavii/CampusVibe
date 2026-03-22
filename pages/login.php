@@ -20,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $_SESSION['user_type'] = $user['user_type'];
 
             if($user['user_type'] == "admin"){
-                header("Location: ../pages/admin.php");
+                header("Location: ../templates/admin.php");
             } else {
                 header("Location: ../pages/dashboard.php");
             }

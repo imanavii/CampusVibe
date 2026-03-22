@@ -114,11 +114,32 @@ $must_attend_result = $conn->query("SELECT * FROM events WHERE event_date >= CUR
                         </p>
                         <p class="event-location">📍 <?php echo htmlspecialchars($event['event_location']); ?></p>
 
+                       <div class="card-actions">
                         <?php if($event['registration_link']): ?>
-                            <a href="<?php echo htmlspecialchars($event['registration_link']); ?>" target="_blank" class="btn-register">Register</a>
-                        <?php else: ?>
-                            <button class="btn-register">Register</button>
-                        <?php endif; ?>
+                         <?php
+                          $reg_link = $event['registration_link'];
+                           if(!preg_match("~^(?:f|ht)tps?://~i", $reg_link)){
+            $reg_link = "https://" . $reg_link;
+        }
+        ?>
+        <a href="<?php echo htmlspecialchars($reg_link); ?>" target="_blank" class="btn-register">Register</a>
+    <?php else: ?>
+        <button class="btn-register">Register</button>
+    <?php endif; ?>
+
+    <?php
+    $fav_check = $conn->prepare("SELECT favorite_id FROM event_favorites WHERE user_id = ? AND event_id = ?");
+    $fav_check->bind_param("ii", $user_id, $event['event_id']);
+    $fav_check->execute();
+    $fav_check->store_result();
+    $is_faved = $fav_check->num_rows > 0;
+    ?>
+    <form method="POST" action="campusvibe/api/fav_event.php" style="margin:0;">
+        <input type="hidden" name="event_id" value="<?php echo $event['event_id']; ?>">
+        <input type="hidden" name="redirect" value="dashboard.php">
+        <button type="submit" class="btn-fav"><?php echo $is_faved ? '❤️' : '🤍'; ?></button>
+    </form>
+</div>
                     </div>
                 </div>
                 <?php endwhile; ?>

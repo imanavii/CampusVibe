@@ -77,12 +77,28 @@ while($row = $result->fetch_assoc()){
                         <div class="event-img-placeholder"></div>
                     <?php endif; ?>
 
-                    <div class="card-content">
-                        <h4><?php echo htmlspecialchars($event['event_title']); ?></h4>
-                        <p>📍 <?php echo htmlspecialchars($event['event_location']); ?></p>
-                        <p>📅 <?php echo date('M d, Y', strtotime($event['event_date'])); ?></p>
-                        <button onclick="fetchEvent(<?php echo $event['event_id']; ?>)">View More</button>
-                    </div>
+                   <div class="card-content">
+    <h4><?php echo htmlspecialchars($event['event_title']); ?></h4>
+    <p>📍 <?php echo htmlspecialchars($event['event_location']); ?></p>
+    <p>📅 <?php echo date('M d, Y', strtotime($event['event_date'])); ?></p>
+
+    <?php
+    $fav_check = $conn->prepare("SELECT favorite_id FROM event_favorites WHERE user_id = ? AND event_id = ?");
+    $fav_check->bind_param("ii", $user_id, $event['event_id']);
+    $fav_check->execute();
+    $fav_check->store_result();
+    $is_faved = $fav_check->num_rows > 0;
+    ?>
+
+    <div class="card-actions">
+        <button class="btn-view-more" onclick="fetchEvent(<?php echo $event['event_id']; ?>)">View More</button>
+        <form method="POST" action="../api/fav_event.php" style="margin:0;">
+            <input type="hidden" name="event_id" value="<?php echo $event['event_id']; ?>">
+            <input type="hidden" name="redirect" value="events.php">
+            <button type="submit" class="btn-fav"><?php echo $is_faved ? '❤️' : '🤍'; ?></button>
+        </form>
+    </div>
+</div>
                 </div>
                 <?php endforeach; ?>
             </div>

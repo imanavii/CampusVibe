@@ -33,10 +33,6 @@
                     <span class="icon">📅</span>
                     <span>All Events</span>
                 </li>
-                <li>
-                    <span class="icon">🔍</span>
-                    <span>Filters</span>
-                </li>
             </ul>
         </nav>
     </aside>
@@ -55,8 +51,8 @@
 
         <!-- Greeting -->
         <div class="greeting">
-            <h1>Good evening, <span class="admin-name">Admin</span> 👋</h1>
-            <p class="date-text">Thursday, March 13, 2026</p>
+            <h1>Good evening, <span class="admin-name">Admin</span></h1>
+            <p class="date-text">Thursday, March 24, 2026</p>
         </div>
 
         <!-- Add New Event Button (Top Right) -->
@@ -109,7 +105,6 @@
         <section class="events-section">
             <div class="section-header">
                 <h2>⏰ Today's Events</h2>
-                <a href="#" class="view-all">View all ></a>
             </div>
 
             <div class="events-grid" id="eventsGrid">
@@ -141,10 +136,6 @@ if($result->num_rows > 0) {
             <div class="event-info-row">
                 👤 <span><?php echo $row['organizer_name']; ?></span>
             </div>
-        </div>
-        <div class="event-card-actions">
-            <button class="btn-edit">Edit</button>
-            <button class="btn-delete">Delete</button>
         </div>
     </div>
 <?php 
@@ -225,7 +216,6 @@ if($result->num_rows > 0) {
                 <span class="close-btn" onclick="closeViewEventModal()">&times;</span>
             </div>
             <div class="event-details" id="eventDetailsContent">
-                <!-- Event details will be dynamically added here -->
             </div>
             <div class="modal-actions">
                 <button class="btn-close" onclick="closeViewEventModal()">Close</button>

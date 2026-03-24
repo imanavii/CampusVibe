@@ -182,6 +182,19 @@ if($result->num_rows > 0) {
                 </div>
 
                 <div class="form-group">
+                    <label for="eventCategory">Category *</label>
+                    <select id="eventCategory" name="category" required>
+                    <option value="" disabled selected>Select a category</option>
+                    <option value="cultural">Cultural</option>
+                    <option value="tech">Tech</option>
+                    <option value="music">Music</option>
+                    <option value="sports">Sports</option>
+                    <option value="other">Other</option>
+                    </select>
+                    <span class="error-msg" id="eventCategoryError"></span>
+                </div>
+
+                <div class="form-group">
                     <label for="eventDescription">Description *</label>
                     <textarea id="eventDescription" name="event_description" rows="3" required></textarea>
                     <span class="error-msg" id="eventDescriptionError"></span>
